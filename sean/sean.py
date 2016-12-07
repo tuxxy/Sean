@@ -1,6 +1,7 @@
 import json
 import string
 import random
+import warnings
 
 from faker import Faker
 
@@ -83,6 +84,9 @@ def _factorize_values(_type=None, _len=0, _format=None, _val=None):
         return fake.email()
     elif _type == 'timestamp':
         return int(fake.date_time_this_month().strftime("%s"))
+    else:
+        warnings.warn("Keyword not implemented - '{}'".format(_type),
+            SyntaxWarning)
 
 
 def _gen_string(size):
