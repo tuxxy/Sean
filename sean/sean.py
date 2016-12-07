@@ -75,6 +75,8 @@ def _factorize_values(_type=None, _len=0, _format=None, _val=None):
         return fake.boolean()
     elif _type == 'text':
         return fake.text()
+    elif _type == 'sentence':
+        return fake.sentence()
     elif _type == 'name':
         return fake.name()
     elif _type == 'email':
