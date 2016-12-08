@@ -18,9 +18,6 @@ DEFAULT_HANDLERS = {
 }
 
 
-ASCII_CHARS = string.ascii_letters + "0123456789"
-
-
 def sean_random_choice(**kwargs):
     return random.choice(kwargs['_val'])
 
@@ -28,7 +25,8 @@ def sean_random_choice(**kwargs):
 def sean_string(**kwargs):
     _len = kwargs.get('_len')
     _format = kwargs.get('_format', None)
-    val = ''.join(random.choice(ASCII_CHARS) for i in range(_len))
+    ascii_chars = string.ascii_letters + "0123456789"
+    val = ''.join(random.choice(ascii_chars) for i in range(_len))
     if _format:
         val = _format.format(val)
     return val
