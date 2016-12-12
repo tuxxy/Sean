@@ -1,0 +1,30 @@
+{
+    "test_string": {
+        "_type": "string",
+        "_len": 30
+    },
+    "test_int": {
+        "_type": "int",
+        "_len": 3
+    },
+    "test_dict": {
+        "_type": "dict",
+        "_val": {
+            "test_string": {
+                "_type": "string",
+                "_len": 26
+            }
+        }
+    },
+    "test_list": {
+        "_type": "list",
+        "_len": 3,
+        "_val": {
+            "test_string": {
+                "_type": "string",
+                "_len": 25
+            }
+        }
+    },
+    "choice": ["this", "or", "that"]
+}
