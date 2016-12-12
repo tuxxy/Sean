@@ -4,18 +4,7 @@ import string
 from faker import Faker
 fake = Faker()
 
-
-DEFAULT_HANDLERS = {
-    None: sean_random_choice,
-    'string': sean_string,
-    'int': sean_int,
-    'bool': sean_bool,
-    'text': sean_text,
-    'sentence': sean_sentence,
-    'name': sean_name,
-    'email': sean_email,
-    'timestamp': sean_timestamp,
-}
+from seantype import SeanType
 
 
 def sean_random_choice(**kwargs):
@@ -63,3 +52,16 @@ def sean_email(**kwargs):
 
 def sean_timestamp(**kwargs):
     return int(fake.date_time_this_month().strftime("%s"))
+
+
+DEFAULT_HANDLERS = {
+    None: sean_random_choice,
+    'string': sean_string,
+    'int': sean_int,
+    'bool': sean_bool,
+    'text': sean_text,
+    'sentence': sean_sentence,
+    'name': sean_name,
+    'email': sean_email,
+    'timestamp': sean_timestamp,
+}

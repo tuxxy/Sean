@@ -1,1 +1,2 @@
-from sean import seanify
+from sean import Sean
+

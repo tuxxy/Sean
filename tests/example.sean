@@ -1,0 +1,57 @@
+{
+    "test_dict": {
+        "_type": "dict",
+        "_val": {
+            "test_string": {
+                "_type": "string",
+                "_len": 25
+            }
+        }
+    },
+    "test_list": {
+        "_type": "list",
+        "_len": 3,
+        "_val": {
+            "test_string": {
+                "_type": "string",
+                "_len": 25
+            }
+        }
+    },
+    "test_list_no_length": {
+        "_type": "list",
+        "_val": {
+            "test_string": {
+                "_type": "string",
+                "_len": 25
+            }
+        }
+    }
+    "test_random_choice": ["this", "or", "that"],
+    "test_string": {
+        "_type": "string",
+        "_len": 25
+    },
+    "test_int": {
+        "_type": "int",
+        "_len": 3
+    },
+    "test_bool": {
+        "_type": "bool"
+    },
+    "test_text": {
+        "_type": "text"
+    },
+    "test_sentence": {
+        "_type": "sentence"
+    },
+    "test_name": {
+        "_type": "name"
+    },
+    "test_email": {
+        "_type": "email"
+    },
+    "test_timestamp": {
+        "_type": "timestamp"
+    }
+}
