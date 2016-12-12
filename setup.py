@@ -11,6 +11,4 @@ setup(
     author_email='me@johnpacific.com',
     packages=[
         'sean',
-        'sean.seantype',
-        'sean.handlers'
     ])
