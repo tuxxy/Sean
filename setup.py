@@ -9,10 +9,7 @@ setup(
         'certain schema'),
     author='https://github.com/tuxxy/',
     author_email='me@johnpacific.com',
-<<<<<<< Updated upstream
-=======
     url='https://github.com/tuxxy/Sean',
->>>>>>> Stashed changes
     install_requires=[
         'faker',
     ],
