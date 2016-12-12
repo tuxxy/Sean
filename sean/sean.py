@@ -14,7 +14,7 @@ class Sean(object):
         self.sean_json = json.loads(sean_formatted_json)
         self.handlers = DEFAULT_HANDLERS
         self.handlers.update(override_handlers)
-        self.sean_types = self._handle_data(self.sean_json)
+        self.sean_types = self._expand_json(self.sean_json)
         
     def seanify(self, format_json=False):
         data = self._exec_types()
@@ -22,17 +22,17 @@ class Sean(object):
             data = json.dumps(data)
         return data
 
-    def _handle_data(self, sean_data):
+    def _expand_json(self, sean_data):
         data = {}
         for key, value in sean_data.items():
             if isinstance(value, dict):
                 _type = value.get('_type', None)
                 if _type == 'dict':
-                    data[key] = self._handle_data(value['_val'])
+                    data[key] = self._expand_json(value['_val'])
                 elif _type == 'list':
                     data_list = []
                     for i in range(0, value.get('_len', 1)):
-                        data_list.append(self._handle_data(value['_val']))
+                        data_list.append(self._expand_json(value['_val']))
                     data[key] = data_list
                 elif _type:
                     data[key] = SeanType(self.handlers[_type], **value)
@@ -43,7 +43,7 @@ class Sean(object):
                 else:
                     data_list = []
                     for idx, val in enumerate(value):
-                        data_list.append(self._handle_data(val))
+                        data_list.append(self._expand_json(val))
                     data[key] = data_list
         return data
 
