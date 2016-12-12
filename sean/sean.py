@@ -14,19 +14,18 @@ class Sean(object):
         self.sean_json = json.loads(sean_formatted_json)
         self.handlers = DEFAULT_HANDLERS
         self.handlers.update(override_handlers)
-        self.sean_types = self.seanify(sean_json=self.sean_json)
+        self.sean_types = self._handle_data(self.sean_json)
         
-    def seanify(self, sean_json=None):
-        sean_data = (sean_json or self.sean_types)
-        data = self._handle_data(sean_data)
+    def seanify(self, format_json=False):
+        data = self._exec_types()
+        if format_json:
+            data = json.dumps(data)
         return data
 
     def _handle_data(self, sean_data):
         data = {}
         for key, value in sean_data.items():
-            if isinstance(value, SeanType):
-                data[key] = value.exec_handler()
-            elif isinstance(value, dict):
+            if isinstance(value, dict):
                 _type = value.get('_type', None)
                 if _type == 'dict':
                     data[key] = self._handle_data(value['_val'])
@@ -46,4 +45,33 @@ class Sean(object):
                     for idx, val in enumerate(value):
                         data_list.append(self._handle_data(val))
                     data[key] = data_list
+        return data
+
+    def _exec_types(self, sean_data=None):
+        sean_types = (sean_data or self.sean_types)
+
+        if isinstance(sean_types, dict):
+            data = {}
+            for key, value in sean_types.items():
+                if isinstance(value, SeanType):
+                    data[key] = value.exec_handler()
+                elif isinstance(value, dict):
+                    data[key] = self._exec_types(sean_data=value)
+                elif isinstance(value, list):
+                    data_list = []
+                    for val in value:
+                        data_list.append(self._exec_types(sean_data=val))
+                    data[key] = data_list
+        elif isinstance(sean_types, list):
+            data = []
+            for idx, value in enumerate(sean_types):
+                if isinstance(value, SeanType):
+                    data[idx] = value.exec_handler()
+                elif isinstance(value, dict):
+                    data[idx] = self._exec_types(sean_data=value)
+                elif isinstance(value, list):
+                    data_list = []
+                    for val in value:
+                        data_list.append(self.exec_types(sean_data=val))
+                    data[idx] = data_list
         return data
