@@ -9,6 +9,9 @@ setup(
         'certain schema'),
     author='https://github.com/tuxxy/',
     author_email='me@johnpacific.com',
+    install_requires=[
+        'faker',
+    ],
     packages=[
         'sean',
     ])
