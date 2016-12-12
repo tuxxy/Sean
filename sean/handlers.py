@@ -54,6 +54,10 @@ def sean_timestamp(**kwargs):
     return int(fake.date_time_this_month().strftime("%s"))
 
 
+def sean_datetime(**kwards):
+    return fake.date_time_this_month().isoformat()
+
+
 DEFAULT_HANDLERS = {
     None: sean_random_choice,
     'string': sean_string,
@@ -64,4 +68,5 @@ DEFAULT_HANDLERS = {
     'name': sean_name,
     'email': sean_email,
     'timestamp': sean_timestamp,
+    'datetime': sean_datetime,
 }
