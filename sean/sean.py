@@ -24,6 +24,11 @@ class Sean(object):
 
     def _expand_json(self, sean_data):
         data = {}
+        # Because of this, there can't be any child lists.
+        # This probably needs a rewrite to handle all of these recursive cases
+        # Might be able to be solved with a caller method that iterates over the
+        # top-most dict and every received dict is treated differently.
+        sean_data = (sean_data.get('_val', None) or sean_data)
         for key, value in sean_data.items():
             if isinstance(value, dict):
                 _type = value.get('_type', None)
@@ -48,7 +53,10 @@ class Sean(object):
         return data
 
     def _exec_types(self, sean_data=None):
-        sean_types = (sean_data or self.sean_types)
+        if sean_data != None:
+            sean_types = sean_data
+        else:
+            sean_types = self.sean_types
 
         if isinstance(sean_types, dict):
             data = {}
