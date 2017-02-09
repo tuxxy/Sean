@@ -1,9 +1,4 @@
 import json
-import string
-import random
-import warnings
-
-from faker import Faker
 
 from seantype import SeanType
 from handlers import DEFAULT_HANDLERS
@@ -15,7 +10,7 @@ class Sean(object):
         self.handlers = DEFAULT_HANDLERS
         self.handlers.update(override_handlers)
         self.sean_types = self._expand_json(self.sean_json)
-        
+
     def seanify(self, format_json=False):
         data = self._exec_types()
         if format_json:

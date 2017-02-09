@@ -4,8 +4,6 @@ import string
 from faker import Faker
 fake = Faker()
 
-from seantype import SeanType
-
 
 def sean_random_choice(**kwargs):
     return random.choice(kwargs['_val'])

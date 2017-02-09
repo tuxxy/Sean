@@ -6,7 +6,7 @@ setup(
     name='sean',
     version='0.8',
     description=('Sean is a JSON factory that produces events based on a',
-        'certain schema'),
+        'predefined schema'),
     author='https://github.com/tuxxy/',
     author_email='me@johnpacific.com',
     url='https://github.com/tuxxy/Sean',
