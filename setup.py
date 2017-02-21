@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='sean',
-    version='0.8',
+    version='0.8.0.1',
     description=('Sean is a JSON structure factory.'),
     author='https://github.com/tuxxy/',
     author_email='me@johnpacific.com',
