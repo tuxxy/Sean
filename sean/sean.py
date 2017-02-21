@@ -1,7 +1,7 @@
 import json
 
-from seantype import SeanType
-from handlers import DEFAULT_HANDLERS
+from .seantype import SeanType
+from .handlers import DEFAULT_HANDLERS
 
 
 class Sean(object):
