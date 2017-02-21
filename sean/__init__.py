@@ -1,1 +1,1 @@
-from sean import Sean
+from .sean import Sean
